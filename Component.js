@@ -1,0 +1,19 @@
+class Component{
+    id;
+    componentTypeId;
+    ownershipLevelId;
+    performanceResultTypeId;
+    userId;
+    name;
+    description;
+    isBenchmark;
+    hasBeenSaved;
+    allowRxPlus;
+    rounds;
+    eachRoundTypeId;
+    createdBy;
+    createdOn;
+    updatedBy;
+    updatedOn;
+    isActive;
+}
