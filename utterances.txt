@@ -1,0 +1,12 @@
+GetNewWodIntent a workout
+GetNewWodIntent a wod
+GetNewWodIntent todays workout
+GetNewWodIntent todays wod
+GetNewWodIntent to tell me todays workout
+GetNewWodIntent to tell me todays wod
+GetNewWodIntent to give me todays workout
+GetNewWodIntent to give me todays wod
+GetNewWodIntent workout for today
+GetNewWodIntent wod for today
+GetNewWodIntent workout
+GetNewWodIntent wod
