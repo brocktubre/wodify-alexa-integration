@@ -10,8 +10,8 @@ var WodIntent = require('./WodIntent');
 var BestCoachIntent = require('./BestCoachIntent');
 
 // stub data from response
-//var json = require('./data.json');
-var json = require('./error.json');
+json = require('./data.json');
+// var json = require('./error.json');
 
 /**
  * Data containing scraped wod
@@ -34,6 +34,16 @@ var json = require('./error.json');
 //     });
 
 const handlers = {
+    'GetBestCoachIntent' : function() {
+        var bestCoachIntent = new BestCoachIntent();
+        var response = bestCoachIntent.getSpeech();
+        const cardTitle = bestCoachIntent.getCardTitle();
+        const cardContent = bestCoachIntent.getCardContent(response.ssml(false));
+        const imageObj = bestCoachIntent.getImageObj();
+        const speechOutput = response.ssml(true);
+        //this.emit(':tell', speechOutput);
+        this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
+    },
     'GetNewWodIntent' : function() {
         var wod = new Wod();
         var wodResponse = wod.buildTodaysProgramming(wod, json); // returns a speech
@@ -44,19 +54,8 @@ const handlers = {
         const cardContent = wodIntent.getCardContent(wodResponse.ssml(false));
         const imageObj = wodIntent.getImageObj();
         const speechOutput = wodResponse.ssml(true);
-        console.log(speechOutput);
         this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
         
-    },
-    'GetBestCoachIntent' : function() {
-        var bestCoachIntent = new BestCoachIntent();
-        var response = bestCoachIntent.getSpeech();
-        const cardTitle = bestCoachIntent.getCardTitle();
-        const cardContent = bestCoachIntent.getCardContent(response.ssml(false));
-        const imageObj = bestCoachIntent.getImageObj();
-        const speechOutput = response.ssml(true);
-        this.emit(':tell', speechOutput);
-        //this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
     }
 };
 

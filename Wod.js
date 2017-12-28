@@ -37,7 +37,7 @@ Wod.prototype.setAnnoucements = function(annoucements){
 }
 
 Wod.prototype.map = function(json){
-    console.log(json);
+
     var APIWod;
     var APIError;
     try{
@@ -100,10 +100,10 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
         var hasAnnoncements = wod.getAnnoucements().length > 0;
 
         if(!hasComponenets){
-            speech.say('There is nothing programmed today.');
+            speech.say('There is nothing programmed today. ');
             speech.pause(PAUSE_500ms);
         } else{
-            speech.say('Here is what is programmed today. ');
+            speech.say('Here is what is programmed today: ');
             speech.pause(PAUSE_500ms);
         }
         
