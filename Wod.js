@@ -1,4 +1,5 @@
 'use strict';
+const Speech = require('ssml-builder');
 
 var Component = require('./Component');
 var Announcement = require('./Announcement');
@@ -36,7 +37,7 @@ Wod.prototype.setAnnoucements = function(annoucements){
 }
 
 Wod.prototype.map = function(json){
-
+    console.log(json);
     var APIWod;
     var APIError;
     try{
@@ -79,6 +80,58 @@ Wod.prototype.map = function(json){
     this.setAnnoucements(allAnnouncements);
 
     return true;
+}
+
+Wod.prototype.buildTodaysProgramming = function(wod, json){
+    
+    var speech = new Speech();
+    const PAUSE_500ms = '500ms';
+
+    try {
+        let response = this.map(json);
+
+        if(response !== true){
+            // some error occured
+            // we got an error response from Wodify
+            throw response;
+        }
+
+        var hasComponenets = wod.getComponents().length > 0;
+        var hasAnnoncements = wod.getAnnoucements().length > 0;
+
+        if(!hasComponenets){
+            speech.say('There is nothing programmed today.');
+            speech.pause(PAUSE_500ms);
+        } else{
+            speech.say('Here is what is programmed today. ');
+            speech.pause(PAUSE_500ms);
+        }
+        
+        // builds the parts of todays programming
+        wod.getComponents().forEach(function(comp, i){
+            speech.say(comp.getDescription());
+            speech.pause(PAUSE_500ms);
+        });
+
+        if(hasAnnoncements){
+            speech.say('Here are today\'s annoncements: ');
+            speech.pause(PAUSE_500ms);
+            // builds the parts of todays programming
+            wod.getAnnoucements().forEach(function(annoncement, i){
+                speech.paragraph(annoncement.getMessage());
+            });
+        }
+        else{
+            speech.say('There are no annoncements today.');
+            speech.pause(PAUSE_500ms);
+        }
+    }catch(error){
+        console.error(error);
+        speech.say('Looks like there was an error retrieving today\'s programming.');
+    }
+    
+    return speech;
+
 }
 
 module.exports = Wod;
