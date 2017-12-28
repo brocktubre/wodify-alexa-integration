@@ -9,10 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^8.5.2",
     "alexa-sdk": "^1.0.24",
     "cheerio": "^1.0.0-rc.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "ssml-builder": "^0.4.1"
+    "ssml-builder": "^0.4.1",
+    "typescript": "^2.6.2"
   }
 }

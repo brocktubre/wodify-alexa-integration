@@ -1,4 +1,4 @@
-class Announcement{
+export class Announcement{
     id;
     message;
     fromDate;
