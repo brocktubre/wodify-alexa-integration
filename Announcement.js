@@ -1,5 +1,7 @@
 'use strict';
 
+const Speech = require('ssml-builder');
+
 var id;
 var message;
 var fromDate;
@@ -48,6 +50,41 @@ Announcement.prototype.getIsActive= function(){
 
 Announcement.prototype.setIsActive = function(isActive){
     this.isActive = isActive;
+}
+
+Announcement.prototype.buildTodaysAnnouncements = function(wod, json){
+    var speech = new Speech();
+    const PAUSE_500ms = '500ms';
+
+    try {
+        let response = wod.map(json);
+
+        if(response !== true){
+            // some error occured
+            // we got an error response from Wodify
+            throw response;
+        }
+
+        var hasAnnouncements = wod.getAnnouncements().length > 0;
+
+        if(hasAnnouncements){
+            speech.say('Here are today\'s announcements: ');
+            speech.pause(PAUSE_500ms);
+            // builds the parts of todays programming
+            wod.getAnnouncements().forEach(function(announcement, i){
+                speech.paragraph(announcement.getMessage());
+            });
+        }
+        else{
+            speech.say('There are no announcements today.');
+            speech.pause(PAUSE_500ms);
+        }
+    }catch(error){
+        console.error(error);
+        speech.say('Looks like there was an error retrieving today\'s announcements.');
+    }
+    
+    return speech;
 }
 
 module.exports = Announcement;

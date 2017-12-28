@@ -28,11 +28,11 @@ Wod.prototype.setCreatedDate = function(date){
     this.createdDate = date;
 }
 
-Wod.prototype.getAnnoucements = function(){
+Wod.prototype.getAnnouncements = function(){
     return this.annoucements;
 }
 
-Wod.prototype.setAnnoucements = function(annoucements){
+Wod.prototype.setAnnouncements = function(annoucements){
     this.annoucements = annoucements;
 }
 
@@ -77,7 +77,7 @@ Wod.prototype.map = function(json){
     } 
 
     this.setComponents(allComponents);
-    this.setAnnoucements(allAnnouncements);
+    this.setAnnouncements(allAnnouncements);
 
     return true;
 }

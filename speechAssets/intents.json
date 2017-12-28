@@ -7,6 +7,9 @@
       "intent": "GetBestCoachIntent"
     },
     {
+      "intent": "GetAnnoncementsIntent"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
