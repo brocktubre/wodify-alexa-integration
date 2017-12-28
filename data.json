@@ -42,7 +42,26 @@
                       "UpdatedBy":"17597",                   
                       "UpdatedOn":"2013-04-03T14:50:38",                   
                       "IsActive":"True"                
-                    },                
+                    },
+                    {                   
+                      "Id":"142255",                   
+                      "ComponentTypeId":"2",                   
+                      "OwnershipLevelId":"3",                   
+                      "PerformanceResultTypeId":"4",                   
+                      "UserId":"0",                   
+                      "Description":"AMRAP 12:00\n 10 Back squat (135/95)\n 30 Double unders\n Rest 2:00 \n then \n 5 x 2 Peg boards",
+                      "IsBenchmark":"True",                   
+                      "HasBeenSaved":"True",                   
+                      "IsNewComponentEmailSent":"True",                  
+                      "AllowRxPlus":"False",                   
+                      "Rounds":"0",                   
+                      "EachRoundTypeId":"0",                   
+                      "CreatedBy":"17597",                   
+                      "CreatedOn":"2013-04-03T14:50:38",                   
+                      "UpdatedBy":"17597",                   
+                      "UpdatedOn":"2013-04-03T14:50:38",                   
+                      "IsActive":"True"                
+                    },                         
                     {                   
                       "Id":"14111",                   
                       "ComponentTypeId":"4",                   
