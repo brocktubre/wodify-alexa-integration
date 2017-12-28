@@ -10,3 +10,7 @@ GetNewWodIntent workout for today
 GetNewWodIntent wod for today
 GetNewWodIntent workout
 GetNewWodIntent wod
+GetBestCoachIntent who the best coach is
+GetBestCoachIntent for the best coach
+GetBestCoachIntent whos the best coach
+GetBestCoachIntent whos the most favorite coach

@@ -44,7 +44,7 @@ Wod.prototype.map = function(json){
     }
     catch(error){
         APIError = json.APIError;
-        throw new Excpetion(error);
+        return APIError.ErrorMessage;
     }
 
     this.components = APIWod.Components.Component;
@@ -77,6 +77,8 @@ Wod.prototype.map = function(json){
 
     this.setComponents(allComponents);
     this.setAnnoucements(allAnnouncements);
+
+    return true;
 }
 
 module.exports = Wod;

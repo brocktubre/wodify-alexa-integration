@@ -4,6 +4,9 @@
       "intent": "GetNewWodIntent"
     },
     {
+      "intent": "GetBestCoachIntent"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {
