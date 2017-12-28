@@ -1,0 +1,7 @@
+{   
+    "APIError": 
+      {     
+        "ResponseCode":"400",     
+        "ErrorMessage":"No workout found matching those criteria. Please change your search parameters and try again."   
+      } 
+  }

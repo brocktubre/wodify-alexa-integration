@@ -27,7 +27,7 @@ Wod.prototype.setCreatedDate = function(date){
     this.createdDate = date;
 }
 
-Wod.prototype.getAnnoucements= function(){
+Wod.prototype.getAnnoucements = function(){
     return this.annoucements;
 }
 
