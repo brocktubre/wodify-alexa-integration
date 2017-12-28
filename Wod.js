@@ -37,7 +37,15 @@ Wod.prototype.setAnnoucements = function(annoucements){
 
 Wod.prototype.map = function(json){
 
-    var APIWod = json.RecordList.APIWod;
+    var APIWod;
+    var APIError;
+    try{
+        APIWod = json.RecordList.APIWod;
+    }
+    catch(error){
+        APIError = json.APIError;
+        throw new Excpetion(error);
+    }
 
     this.components = APIWod.Components.Component;
     this.createdDate = APIWod.CreatedDate;
