@@ -5,21 +5,13 @@ const Speech = require('ssml-builder');
 const Alexa = require('alexa-sdk');
 
 var Wod = require('./Wod');
-
-// constants
-const PAUSE_500ms = '500ms';
-
-// skill specific declarations
-// var workoutUri = 'http://comptrain.co/individuals/workout/tuesday-%C2%B7-12-19-17/';
-// var cardImageLarge = 'https://static1.squarespace.com/static/56e7adf32eeb81dea46a2b24/t/576a929920099e6256e793b6/1505491657529/?format=1500w';
-// var cardImageSmall = 'https://pikdo.com/img/comptrain.co.jpg?aHR0cHM6Ly9zY29udGVudC5jZG5pbnN0YWdyYW0uY29tL3Q1MS4yODg1LTE5L3MzMjB4MzIwLzE2NTg1MDA3XzE4MTc2MTMwMzUxNTQ2MDNfNjk1MDA1MjE2MDY4MzkwMDkyOF9hLmpwZw==';
 var json = require('./data.json');
 var speech = new Speech();
 
 var wod = new Wod();
 wod.map(json);
 
-
+console.log(wod.getComponents());
 
 /**
  * Data containing scraped wod

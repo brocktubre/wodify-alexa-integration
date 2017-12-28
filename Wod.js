@@ -1,5 +1,8 @@
 'use strict';
 
+var Component = require('./Component');
+var Announcement = require('./Announcement');
+
 var components;
 var createdDate;
 var annoucements;
@@ -8,9 +11,27 @@ function Wod() {
 
 }
 
-function Wod(components, createdDate, annoucements) {
+Wod.prototype.getComponents = function(){
+    return this.components;
+}
+
+Wod.prototype.setComponents = function(components){
     this.components = components;
-    this.createdDate = createdDate;
+}
+
+Wod.prototype.getCreatedDate = function(){
+    return this.createdDate;
+}
+
+Wod.prototype.setCreatedDate = function(date){
+    this.createdDate = date;
+}
+
+Wod.prototype.getAnnoucements= function(){
+    return this.annoucements;
+}
+
+Wod.prototype.setAnnoucements = function(annoucements){
     this.annoucements = annoucements;
 }
 
@@ -18,24 +39,36 @@ Wod.prototype.map = function(json){
 
     var APIWod = json.RecordList.APIWod;
 
-    this.components = APIWod.Components;
+    this.components = APIWod.Components.Component;
     this.createdDate = APIWod.CreatedDate;
     this.annoucements = APIWod.Announcements;
-    console.log(this.components);
     
     var allComponents = new Array();
+    var allAnnouncements = new Array();
 
     for (var key in this.components) {
         if (this.components.hasOwnProperty(key)) {
-           console.log(this.components[key].Id);
-           console.log(this.components[key].Description);
+          var comp = new Component();
+          comp.setId(this.components[key].Id);
+          comp.setDescription(this.components[key].Description);
+          allComponents.push(comp);
         }
-     }
+    }
 
-    // console.log(this.components);
-    // console.log(this.createdDate);
-    // console.log(this.annoucements);
-    // console.log(json);
+    for (var key in this.annoucements) {
+        if (this.annoucements.hasOwnProperty(key)) {
+          var annoucement = new Announcement();
+          annoucement.setId(this.annoucements[key].Id);
+          annoucement.setFromDate(this.annoucements[key].FromDate);
+          annoucement.setToDate(this.annoucements[key].ToDate);
+          annoucement.setIsActive(this.annoucements[key].IsActive);
+          annoucement.setMessage(this.annoucements[key].Message);
+          allAnnouncements.push(annoucement);
+        }
+    } 
+
+    this.setComponents(allComponents);
+    this.setAnnoucements(allAnnouncements);
 }
 
 module.exports = Wod;
