@@ -6,16 +6,15 @@ const Alexa = require('alexa-sdk');
 
 const PAUSE_500ms = '500ms';
 
-var cardImageLarge = 'http://www.redrivercrossfit.com/wp-content/uploads/2015/04/newlogo3.jpg';
-var cardImageSmall = 'https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/12814639_966607666721083_1936476695944539950_n.jpg?oh=7b82dd675d7aaaccc1f28130d95439b1&oe=5ABF9E75';
 var Wod = require('./Wod');
+var WodIntent = require('./WodIntent');
+
 var json = require('./data.json');
 //var json = require('./error.json');
 var speech = new Speech();
-
 var wod = new Wod();
+
 buildTodaysProgramming();
-console.log(speech);
 
 /**
  * Data containing scraped wod
@@ -87,24 +86,16 @@ function cleanUpData(data){
 
 }
 
-function cleanUpDataForCard(data){
-    data = data.replace(/<break time='500ms'\/>/g, '\n');
-    data = data.replace(/<speak>/g, '');
-    data = data.replace(/<\/speak>/g, '');
-    return data;
-}
-
 const handlers = {
     'GetNewWodIntent' : function() {
         // WOD.then((wodResponse) => {
+            var wodIntent = new WodIntent()
             var wodResponse = speech;
-            const cardTitle = 'Today\'s Workout';
-            const cardContent = cleanUpDataForCard(wodResponse.ssml(false));
-            const imageObj = {
-                smallImageUrl: cardImageSmall,
-                largeImageUrl: cardImageLarge
-            };
+            const cardTitle = wodIntent.getCardTitle();
+            const cardContent = wodIntent.getCardContent();
+            const imageObj = wodIntent.getImageObj();
             const speechOutput = wodResponse.ssml(true);
+            console.log(speechOutput);
             this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
         // });
     },
