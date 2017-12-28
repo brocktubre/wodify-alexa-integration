@@ -35,8 +35,6 @@ var json = require('./error.json');
 
 const handlers = {
     'GetNewWodIntent' : function() {
-        // WOD.then((wodResponse) => {
-        // });
         var wod = new Wod();
         var wodResponse = wod.buildTodaysProgramming(wod, json); // returns a speech
 
@@ -67,11 +65,3 @@ exports.handler = function(event, context, callback) {
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
-
-var bestCoachIntent = new BestCoachIntent();
-var response = bestCoachIntent.getSpeech();
-const cardTitle = bestCoachIntent.getCardTitle();
-const cardContent = bestCoachIntent.getCardContent(response.ssml(false));
-const imageObj = bestCoachIntent.getImageObj();
-const speechOutput = response.ssml(true);
-console.log(speechOutput);

@@ -2,7 +2,7 @@
 
 var cardImageLarge = 'http://www.redrivercrossfit.com/wp-content/uploads/2015/04/newlogo3.jpg';
 var cardImageSmall = 'https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/12814639_966607666721083_1936476695944539950_n.jpg?oh=7b82dd675d7aaaccc1f28130d95439b1&oe=5ABF9E75';
-var cardTitle = 'Red River\'s Best Coach';
+var cardTitle = 'Today\'s Workout';
 
 function WodIntent() {
 
