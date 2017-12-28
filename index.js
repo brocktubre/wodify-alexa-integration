@@ -77,13 +77,3 @@ exports.handler = function(event, context, callback) {
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
-
-var announcementsIntent = new AnnouncementsIntent();
-var announcement = new Announcement();
-var wod = new Wod();
-var announcementResponse = announcement.buildTodaysAnnouncements(wod, json); // returns a speech
-const cardTitle = announcementsIntent.getCardTitle();
-const cardContent = announcementsIntent.getCardContent(announcementResponse.ssml(false));
-const imageObj = announcementsIntent.getImageObj();
-const speechOutput = announcementResponse.ssml(true);
-console.log(speechOutput);
