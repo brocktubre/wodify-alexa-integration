@@ -97,7 +97,7 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
         }
 
         var hasComponenets = wod.getComponents().length > 0;
-        var hasAnnoncements = wod.getAnnoucements().length > 0;
+        var hasAnnoncements = wod.getAnnouncements().length > 0;
 
         if(!hasComponenets){
             speech.say('There is nothing programmed today. ');
@@ -117,7 +117,7 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
             speech.say('Here are today\'s annoncements: ');
             speech.pause(PAUSE_500ms);
             // builds the parts of todays programming
-            wod.getAnnoucements().forEach(function(annoncement, i){
+            wod.getAnnouncements().forEach(function(annoncement, i){
                 speech.paragraph(annoncement.getMessage());
             });
         }
