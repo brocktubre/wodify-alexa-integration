@@ -43,7 +43,8 @@ const handlers = {
         const cardContent = bestCoachIntent.getCardContent(response.ssml(false));
         const imageObj = bestCoachIntent.getImageObj();
         const speechOutput = response.ssml(true);
-        this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
+        this.emit(':tell', speechOutput);
+        //this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
     },
     'GetAnnouncementsIntent' : function() {
         var announcementsIntent = new AnnouncementsIntent();
@@ -54,7 +55,8 @@ const handlers = {
         const cardContent = announcementsIntent.getCardContent(announcementResponse.ssml(false));
         const imageObj = announcementsIntent.getImageObj();
         const speechOutput = announcementResponse.ssml(true);
-        this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
+        this.emit(':tell', speechOutput);
+        //this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
     },
     'GetNewWodIntent' : function() {
         var wod = new Wod();
@@ -66,7 +68,8 @@ const handlers = {
         const cardContent = wodIntent.getCardContent(wodResponse.ssml(false));
         const imageObj = wodIntent.getImageObj();
         const speechOutput = wodResponse.ssml(true);
-        this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj); 
+        this.emit(':tell', speechOutput);
+        //this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj); 
     }
 };
 

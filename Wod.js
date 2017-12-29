@@ -136,7 +136,7 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
 }
 
 function replaceCharacters(data){
-    data = data.replace(/#/g, ' lbs');
+    data = data.replace(/#/g, ' lbs.');
     data = data.replace(/\//g, ',,');
     return data;
 }
