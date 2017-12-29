@@ -30,7 +30,7 @@
                       "OwnershipLevelId":"3",                   
                       "PerformanceResultTypeId":"4",                   
                       "UserId":"0",                   
-                      "Description":"4 rds\n60 sec amrap max cal row\n60 sec amrap Double unders\n60 sec Amrap Kb swings (53/35)\nRest/walk for 3 mins",
+                      "Description":"Strength\n Paused Front Squat (Heavy Single)\n 2 Second Pause",
                       "IsBenchmark":"True",                   
                       "HasBeenSaved":"True",                   
                       "IsNewComponentEmailSent":"True",                  
@@ -49,7 +49,7 @@
                       "OwnershipLevelId":"3",                   
                       "PerformanceResultTypeId":"4",                   
                       "UserId":"0",                   
-                      "Description":"AMRAP 12:00\n 10 Back squat (135/95)\n 30 Double unders\n Rest 2:00 \n then \n 5 x 2 Peg boards",
+                      "Description":"Metcon\n Metcon (AMRAP - Reps)\n AMRAP 5:\n 15 Kettlebell Swings (53/35#)\n 15 Front Squat (115/80#)\n 15/12 Calorie Bike\n \n Rest 5 Minutes\n \n Repeat",
                       "IsBenchmark":"True",                   
                       "HasBeenSaved":"True",                   
                       "IsNewComponentEmailSent":"True",                  
@@ -60,25 +60,6 @@
                       "CreatedOn":"2013-04-03T14:50:38",                   
                       "UpdatedBy":"17597",                   
                       "UpdatedOn":"2013-04-03T14:50:38",                   
-                      "IsActive":"True"                
-                    },                         
-                    {                   
-                      "Id":"14111",                   
-                      "ComponentTypeId":"4",                   
-                      "OwnershipLevelId":"3",                   
-                      "PerformanceResultTypeId":"1",                   
-                      "UserId":"0",                   
-                      "Name":"Pullups (max reps)",                   
-                      "Description":"B. Back rack barbell Bulgarian split squats 3 x 6 per leg \nrest 1 min btw legs\nC. Weighted plank hold accumulate 4 mins\nD. Shuttle sprints x 3 rest 2 mins\n (25m up and back, 50m up and back =1)",
-                      "IsBenchmark":"True",                   
-                      "HasBeenSaved":"True",                                                   "IsNewComponentEmailSent":"True",                   
-                      "AllowRxPlus":"False",                   
-                      "Rounds":"0",                   
-                      "EachRoundTypeId":"0",                   
-                      "CreatedBy":"17597",                   
-                      "CreatedOn":"2013-04-03T14:45:07",                   
-                      "UpdatedBy":"17597",                   
-                      "UpdatedOn":"2013-04-03T14:45:07",                   
                       "IsActive":"True"                
                     }             
                   ]          

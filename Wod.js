@@ -59,7 +59,8 @@ Wod.prototype.map = function(json){
         if (this.components.hasOwnProperty(key)) {
           var comp = new Component();
           comp.setId(this.components[key].Id);
-          comp.setDescription(this.components[key].Description);
+          var desc = replaceCharacters(this.components[key].Description)
+          comp.setDescription(desc);
           allComponents.push(comp);
         }
     }
@@ -97,7 +98,7 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
         }
 
         var hasComponenets = wod.getComponents().length > 0;
-        var hasAnnoncements = wod.getAnnouncements().length > 0;
+        var hasAnnouncements = wod.getAnnouncements().length > 0;
 
         if(!hasComponenets){
             speech.say('There is nothing programmed today. ');
@@ -113,16 +114,16 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
             speech.pause(PAUSE_500ms);
         });
 
-        if(hasAnnoncements){
-            speech.say('Here are today\'s annoncements: ');
+        if(hasAnnouncements){
+            speech.say('Here are today\'s announcements: ');
             speech.pause(PAUSE_500ms);
             // builds the parts of todays programming
-            wod.getAnnouncements().forEach(function(annoncement, i){
-                speech.paragraph(annoncement.getMessage());
+            wod.getAnnouncements().forEach(function(announcement, i){
+                speech.paragraph(announcement.getMessage());
             });
         }
         else{
-            speech.say('There are no annoncements today.');
+            speech.say('There are no announcements today.');
             speech.pause(PAUSE_500ms);
         }
     }catch(error){
@@ -132,6 +133,13 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
     
     return speech;
 
+}
+
+function replaceCharacters(data){
+    data = data.replace(/#/g, ' lbs');
+    data = data.replace(/\//g, ', ');
+
+    return data;
 }
 
 module.exports = Wod;
