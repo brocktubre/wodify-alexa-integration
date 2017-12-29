@@ -117,7 +117,7 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
         if(hasAnnouncements){
             speech.say('Here are today\'s announcements: ');
             speech.pause(PAUSE_500ms);
-            // builds the parts of todays programming
+            // builds the parts of todays announcements
             wod.getAnnouncements().forEach(function(announcement, i){
                 speech.paragraph(announcement.getMessage());
             });
@@ -137,8 +137,7 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
 
 function replaceCharacters(data){
     data = data.replace(/#/g, ' lbs');
-    data = data.replace(/\//g, ', ');
-
+    data = data.replace(/\//g, ',,');
     return data;
 }
 

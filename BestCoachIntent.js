@@ -2,9 +2,10 @@
 
 const Speech = require('ssml-builder');
 
-var cardImageLarge = 'http://www.redrivercrossfit.com/wp-content/uploads/2015/04/newlogo3.jpg';
-var cardImageSmall = 'https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/12814639_966607666721083_1936476695944539950_n.jpg?oh=7b82dd675d7aaaccc1f28130d95439b1&oe=5ABF9E75';
-var cardTitle = 'Red River\'s Best Coach';
+var cardImageLarge;
+var cardImageSmall;
+var cardTitle;
+
 var COACHES = [
     "Johnnie",
     "Wells",
@@ -14,7 +15,9 @@ var COACHES = [
 var RESPONSES = [];
 
 function BestCoachIntent() {
-
+    this.cardImageLarge = 'http://www.redrivercrossfit.com/wp-content/uploads/2015/04/newlogo3.jpg';
+    this.cardImageSmall = 'https://scontent-dft4-2.xx.fbcdn.net/v/t1.0-9/12814639_966607666721083_1936476695944539950_n.jpg?oh=7b82dd675d7aaaccc1f28130d95439b1&oe=5ABF9E75';
+    this.cardTitle = 'Red River\'s Best Coach';
 }
 
 BestCoachIntent.prototype.getCardTitle = function(){
@@ -39,19 +42,19 @@ BestCoachIntent.prototype.getSpeech = function(){
     var randomCoach = COACHES[coachIndex];
 
     var speech0 = new Speech();
-    speech0.prosody({pitch: 'high', volume: 'loud'}, 'Oh ');
-    speech0.say(' that\'s easy. It\'s ' + randomCoach + ' of course.');
+    speech0.prosody({pitch: 'high', volume: 'loud'}, 'Oh');
+    speech0.say('that\'s easy. It\'s ' + randomCoach + ' of course.');
     RESPONSES[0] = speech0;
 
     var speech1 = new Speech();
-    speech1.emphasis('strong', 'Hmmm ');
-    speech1.say('let me think. ');
+    speech1.emphasis('strong', 'Hmmm');
+    speech1.say('let me think.');
     speech1.pause('500ms');
     speech1.say('I choose ' + randomCoach + '.');
     RESPONSES[1] = speech1;
 
     var speech2 = new Speech();
-    speech2.say('Everyone knows it\'s coach ' + randomCoach);
+    speech2.say('Everyone knows it\'s coach ' + randomCoach + '.');
     RESPONSES[2] = speech2;
 
     var responseIndex = Math.floor(Math.random() * RESPONSES.length);
@@ -64,6 +67,10 @@ function cleanUpDataForCard(data){
     data = data.replace(/<break time='500ms'\/>/g, '\n');
     data = data.replace(/<speak>/g, '');
     data = data.replace(/<\/speak>/g, '');
+    data = data.replace(/<prosody pitch='high' volume='loud'>/g, '');
+    data = data.replace(/<\/prosody>/g, '');
+    data = data.replace(/<emphasis level='strong'>/g, '');
+    data = data.replace(/<\/emphasis>/g, '');
     return data;
 }
 

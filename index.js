@@ -38,12 +38,11 @@ json = require('./data.json');
 const handlers = {
     'GetBestCoachIntent' : function() {
         var bestCoachIntent = new BestCoachIntent();
-        var response = bestCoachIntent.getSpeech();
+        var response = bestCoachIntent.getSpeech(); // returns a speech obj
         const cardTitle = bestCoachIntent.getCardTitle();
         const cardContent = bestCoachIntent.getCardContent(response.ssml(false));
         const imageObj = bestCoachIntent.getImageObj();
         const speechOutput = response.ssml(true);
-        //this.emit(':tell', speechOutput);
         this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
     },
     'GetAnnouncementsIntent' : function() {
@@ -55,7 +54,6 @@ const handlers = {
         const cardContent = announcementsIntent.getCardContent(announcementResponse.ssml(false));
         const imageObj = announcementsIntent.getImageObj();
         const speechOutput = announcementResponse.ssml(true);
-        //this.emit(':tell', speechOutput);
         this.emit(':tellWithCard', speechOutput, cardTitle, cardContent, imageObj);
     },
     'GetNewWodIntent' : function() {
@@ -77,3 +75,11 @@ exports.handler = function(event, context, callback) {
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
+
+var bestCoachIntent = new BestCoachIntent();
+var response = bestCoachIntent.getSpeech(); // returns a speech obj
+const cardTitle = bestCoachIntent.getCardTitle();
+const cardContent = bestCoachIntent.getCardContent(response.ssml(false));
+const imageObj = bestCoachIntent.getImageObj();
+const speechOutput = response.ssml(true);
+console.log(cardContent);
