@@ -36,17 +36,18 @@ Wod.prototype.setAnnouncements = function(annoucements){
     this.annoucements = annoucements;
 }
 
-Wod.prototype.map = function(json){
-
+Wod.prototype.map = function(data){
+    
+    var json = JSON.parse(data);
     var APIWod;
     var APIError;
-    //console.log(json);
+
     try{
         APIWod = json.RecordList.APIWod;
     }
     catch(error){
         APIError = json.APIError;
-        return APIError.ErrorMessage;
+        return APIError;
     }
 
     this.components = APIWod.Components.Component;
@@ -95,7 +96,12 @@ Wod.prototype.buildTodaysProgramming = function(wod, json){
         if(response !== true){
             // some error occured
             // we got an error response from Wodify
-            throw response;
+            if(response.ResponseCode == 400){
+                speech.say('Nothing has been posted today.');
+                return speech;
+            }else{
+                throw response;
+            }
         }
 
         var hasComponenets = wod.getComponents().length > 0;

@@ -62,7 +62,12 @@ Announcement.prototype.buildTodaysAnnouncements = function(wod, json){
         if(response !== true){
             // some error occured
             // we got an error response from Wodify
-            throw response;
+            if(response.ResponseCode == 400){
+                speech.say('There are no announcements today.');
+                return speech;
+            }else{
+                throw response;
+            }
         }
 
         var hasAnnouncements = wod.getAnnouncements().length > 0;
