@@ -40,6 +40,7 @@ Wod.prototype.map = function(json){
 
     var APIWod;
     var APIError;
+    //console.log(json);
     try{
         APIWod = json.RecordList.APIWod;
     }
