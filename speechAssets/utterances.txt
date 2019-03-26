@@ -1,17 +1,17 @@
 GetNewWodIntent a workout
 GetNewWodIntent a wod
-GetNewWodIntent todays workout
-GetNewWodIntent todays wod
-GetNewWodIntent to tell me todays workout
-GetNewWodIntent to tell me todays wod
-GetNewWodIntent to give me todays workout
-GetNewWodIntent to give me todays wod
+GetNewWodIntent {wodDate} workout
+GetNewWodIntent {wodDate} wod
+GetNewWodIntent to tell me {wodDate} workout
+GetNewWodIntent to tell me {wodDate} wod
+GetNewWodIntent to give me {wodDate} workout
+GetNewWodIntent to give me {wodDate} wod
 GetNewWodIntent to tell me a workout
 GetNewWodIntent to tell me a wod
 GetNewWodIntent to give me a workout
 GetNewWodIntent to give me a wod
-GetNewWodIntent for the workout today
-GetNewWodIntent for the wod today
+GetNewWodIntent for the workout {wodDate}
+GetNewWodIntent for the wod {wodDate}
 GetNewWodIntent for the workout
 GetNewWodIntent for the wod
 GetBestCoachIntent who the best coach is
@@ -19,6 +19,6 @@ GetBestCoachIntent for the best coach
 GetBestCoachIntent whos the best coach
 GetBestCoachIntent whos the most favorite coach
 GetBestCoachIntent whos the favoritest coach
-GetAnnouncementsIntent for todays announcements
+GetAnnouncementsIntent for {wodDate} announcements
 GetAnnouncementsIntent for announcements
 GetAnnouncementsIntent for any announcements

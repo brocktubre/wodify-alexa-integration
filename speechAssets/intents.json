@@ -1,7 +1,13 @@
 {
   "intents": [
     {
-      "intent": "GetNewWodIntent"
+      "intent": "GetNewWodIntent",
+      "slots": [
+        {
+          "name": "wodDate",
+          "type": "AMAZON.DATE"
+        }
+      ]
     },
     {
       "intent": "GetBestCoachIntent"

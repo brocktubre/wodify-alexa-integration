@@ -36,7 +36,8 @@ HttpRequest.prototype.getUrl = function(date, requestType){
     this.date = '&date=' + month + '%2f' + day + '%2f' + year;
     this.requestType = requestType + this.requestTypeSuffix;
     
-    return this.url + this.requestType + this.apiKey + this.location + this.program + this.date + this.type + this.encoding;
+    const returnUrl = this.url + this.requestType + this.apiKey + this.location + this.program + this.date + this.type + this.encoding;
+    return returnUrl;
 }
 
 

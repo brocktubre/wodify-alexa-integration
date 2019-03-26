@@ -2,6 +2,6 @@ mkdir ./src && cp Announcement.js AnnouncementsIntent.js BestCoachIntent.js Comp
 mkdir -p ./src/node_modules && cp -r node_modules/ ./src/node_modules
 zip -r ../upload.zip ./src
 cd ..
-#aws lambda update-function-code --function-name WodifyAlexaIntegration --zip-file fileb://upload.zip
+aws lambda --profile AWSCliUser --region us-east-1 update-function-code --function-name WodifyAlexaIntegration --zip-file fileb://upload.zip
 cd ./wodify-alexa-integration
-#rm ../upload.zip && rm -rf ./src
+rm ../upload.zip && rm -rf ./src

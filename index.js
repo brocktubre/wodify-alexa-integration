@@ -14,6 +14,8 @@ var HttpRequest = require('./HttpRequest');
 
 var url = new HttpRequest().getUrl(new Date(), 'WODs_v1');
 
+var data = require('./data.json');
+
 /**
  * Data containing scraped wod
  */
@@ -26,6 +28,7 @@ const options = {
 
 var WOD = Rp(options)
     .then((body) => {
+        body = JSON.stringify(data);
         return body;
     })
     .catch((err) => {
@@ -80,15 +83,28 @@ exports.handler = function(event, context, callback) {
     alexa.execute();
 };
 
+// WOD.then((json) => {
+//     var announcementsIntent = new AnnouncementsIntent();
+//     var announcement = new Announcement();
+//     var wod = new Wod();
+//     var announcementResponse = announcement.buildTodaysAnnouncements(wod, json); // returns a speech
+//     const cardTitle = announcementsIntent.getCardTitle();
+//     const cardContent = announcementsIntent.getCardContent(announcementResponse.ssml(false));
+//     const imageObj = announcementsIntent.getImageObj();
+//     const speechOutput = announcementResponse.ssml(true);
+//     console.log(speechOutput);
+//     //this.emit(':tell', speechOutput);
+// });
+
 WOD.then((json) => {
-    var announcementsIntent = new AnnouncementsIntent();
-    var announcement = new Announcement();
+    var wodIntent = new WodIntent();
+    // var announcement = new Announcement();
     var wod = new Wod();
-    var announcementResponse = announcement.buildTodaysAnnouncements(wod, json); // returns a speech
-    const cardTitle = announcementsIntent.getCardTitle();
-    const cardContent = announcementsIntent.getCardContent(announcementResponse.ssml(false));
-    const imageObj = announcementsIntent.getImageObj();
-    const speechOutput = announcementResponse.ssml(true);
+    var wodResponse = wod.buildTodaysProgramming(wod, json); // returns a speech
+    // const cardTitle = wodIntent.getCardTitle();
+    // const cardContent = wodIntent.getCardContent(wodResponse.ssml(false));
+    //  const imageObj = wodIntent.getImageObj();
+    const speechOutput = wodResponse.ssml(true);
     console.log(speechOutput);
     //this.emit(':tell', speechOutput);
 });
